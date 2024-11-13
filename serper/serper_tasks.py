@@ -13,10 +13,11 @@ def serper_search_task(agent)->Task:
             - Earnings Statements
             - Balance Sheets
             etc
-            The query may also specify a time period (e.g., Q2 FY 2025, fiscal year 2024). If no time period is specified, retrieve the most recent report available.[latest date: {date} (YYYY-MM-DD)]
+            The query may also specify a time period (e.g., Q2 FY 2025, fiscal year 2024). 
         Refine the search query to get precise and reliable results based on the user's request. Ensure that the reports contain comprehensive financial data, including key financial indicators.
         Make Use of Advanced Search Filters like site:<site>, after:<after date> etc
         You can choose not to use them if you are not getting good results
+        If no time period is specified, retrieve the most recent report available.Use This date to determine the latest quarter,year etc [latest date: {date} (YYYY-MM-DD)]
     """),
     expected_output=dedent("""
         The output should include a list of the most relevant financial PDF reports retrieved from the web, including:
