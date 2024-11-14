@@ -1,6 +1,6 @@
 streamlit
 selenium
-dotenv
+python-dotenv
 PyPDF2
 OpenAI
 anthropic
