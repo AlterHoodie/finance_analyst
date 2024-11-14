@@ -3,6 +3,9 @@ from dotenv import load_dotenv
 from stream_lit.session import init_session_state, reset_session_state
 from utils import download_pdf, pdf_preprocessing, get_file_stream
 from serper import serper_crew_run
+import('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 # Initialize the app
 load_dotenv()
