@@ -6,3 +6,4 @@ OpenAI
 anthropic
 crewai
 crewai_tools
+pysqlite3-binary
