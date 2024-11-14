@@ -6,3 +6,4 @@ OpenAI
 anthropic
 crewai
 crewai_tools
+sqlite3 >= 3.35.0
