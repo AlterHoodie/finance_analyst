@@ -1,7 +1,7 @@
 import time 
-import anthropic 
+import anthropic
 
-class ConversationHistory:
+class AntHistory:
     def __init__(self):
         # Initialize an empty list to store conversation turns
         self.turns = []
@@ -107,7 +107,7 @@ class ConversationHistory:
         except anthropic.RateLimitError as e:
             print('Rate Limit Hit')
             return e.body
-        except anthropic.StatusError as e:
+        except anthropic.APIStatusError as e:
             print('Non 200 Status recieved')
             return e.body
         except anthropic.AnthropicError as e:

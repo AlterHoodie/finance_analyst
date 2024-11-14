@@ -1,0 +1,8 @@
+streamlit
+selenium
+dotenv
+PyPDF2
+OpenAI
+anthropic
+crewai
+crewai_tools

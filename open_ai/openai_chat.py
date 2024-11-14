@@ -1,8 +1,8 @@
 import time 
-from open_ai import OpenAI
+from openai import OpenAI
 from dotenv import load_dotenv
 
-class ConversationHistory:
+class OpenAIHistory:
     def __init__(self,vector_store_id,assistant_id):
         self.vector_store_id = vector_store_id
         self.assistant_id = assistant_id
@@ -23,17 +23,20 @@ class ConversationHistory:
         self.turns = []    
         ## TODO Delete all messages in a thread
 
-    def add_knowledge_base(self,filepath):
+    def get_file_list(self):
+        file_list = self.client.beta.vector_stores.files.list(
+                vector_store_id = self.vector_store_id
+            )
+        return file_list
+
+    def add_knowledge_base(self,file_stream):
         try:
-            file_stream = [open(path,'rb') for path in [filepath]]
 
             file_batch = self.client.beta.vector_stores.file_batches.upload_and_poll(
                 vector_store_id = self.vector_store_id,
                 files = file_stream
             )
-            file_list = self.client.beta.vector_stores.files.list(
-                vector_store_id = self.vector_store_id
-            )
+            file_list = self.get_file_list()
             return file_list
 
         except Exception as e:
@@ -71,8 +74,6 @@ class ConversationHistory:
             ]
             })
     
-
-
     def get_response(self,user_content):
         try:
             message = self.client.beta.threads.messages.create(
